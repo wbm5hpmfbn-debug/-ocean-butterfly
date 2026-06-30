@@ -1,0 +1,54 @@
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+min-height:100vh;
+overflow:hidden;
+font-family:system-ui,sans-serif;
+background:linear-gradient(180deg,#000 0%,#02132d 45%,#0b4fb8 100%);
+position:relative;
+}
+.bg{
+position:fixed;inset:0;
+background:
+radial-gradient(circle at 50% 85%,rgba(90,170,255,.45),transparent 35%),
+radial-gradient(circle at 15% 25%,rgba(255,255,255,.08),transparent 20%),
+radial-gradient(circle at 80% 30%,rgba(0,170,255,.18),transparent 25%);
+animation:drift 12s ease-in-out infinite alternate;
+}
+.content{
+position:absolute;
+left:50%;top:50%;
+transform:translate(-50%,-50%);
+text-align:center;
+padding:2rem 3rem;
+color:white;
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(10px);
+border:1px solid rgba(255,255,255,.2);
+border-radius:24px;
+box-shadow:0 0 30px rgba(100,180,255,.25);
+}
+h1{text-shadow:0 0 12px #7fd3ff;margin-bottom:.6rem}
+.butterfly{
+position:absolute;
+width:60px;height:60px;
+filter:drop-shadow(0 0 10px #8fdcff);
+animation:float 6s ease-in-out infinite;
+}
+.butterfly::before,.butterfly::after{
+content:"";
+position:absolute;
+width:30px;height:40px;
+background:linear-gradient(#dff7ff,#56b7ff,#1d49b5);
+border-radius:80% 20% 70% 30%;
+}
+.butterfly::before{left:0;transform:rotate(-25deg)}
+.butterfly::after{right:0;transform:scaleX(-1) rotate(-25deg)}
+.b1{left:12%;top:20%}
+.b2{right:18%;top:35%;animation-delay:-2s}
+.b3{left:70%;bottom:15%;animation-delay:-4s}
+@keyframes float{
+50%{transform:translateY(-25px) rotate(8deg)}
+}
+@keyframes drift{
+to{transform:scale(1.1) translateY(-15px)}
+}
