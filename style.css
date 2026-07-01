@@ -3,7 +3,18 @@ body{
 min-height:100vh;
 overflow:hidden;
 font-family:system-ui,sans-serif;
-background:linear-gradient(180deg,#000 0%,#02132d 45%,#0b4fb8 100%);
+background:
+radial-gradient(circle at 50% 105%, rgba(116,217,255,.75), transparent 28%),
+radial-gradient(circle at 50% 82%, rgba(10,74,168,.65), transparent 38%),
+radial-gradient(circle at 80% 25%, rgba(0,130,255,.20), transparent 28%),
+radial-gradient(circle at 20% 20%, rgba(116,217,255,.12), transparent 24%),
+linear-gradient(
+180deg,
+#02030B 0%,
+#061C46 35%,
+#0A4AA8 75%,
+#74D9FF 100%
+);
 position:relative;
 }
 .bg{
