@@ -64,76 +64,91 @@ border-radius:80% 20% 70% 30%;
 to{transform:scale(1.1) translateY(-15px)}
 }
 /* 水面 */
-/* 水面のゆらめき */
+/* 本気版：夜の深海を見上げる水面 */
 .water{
   position:fixed;
   top:0;
   left:0;
   right:0;
-  height:26vh;
+  height:30vh;
   pointer-events:none;
   z-index:10;
-  opacity:.75;
+  overflow:hidden;
+  opacity:.85;
 
   background:
-    radial-gradient(ellipse at 50% 0%, rgba(160,230,255,.45), transparent 45%),
-    repeating-radial-gradient(
-      ellipse at 50% -20%,
-      rgba(180,240,255,.28) 0 2px,
-      transparent 3px 18px
-    );
-
-  filter:blur(.6px);
-  animation:waterMove 10s ease-in-out infinite alternate;
+    radial-gradient(ellipse at 50% 0%, rgba(150,230,255,.45), transparent 42%),
+    linear-gradient(to bottom, rgba(140,220,255,.18), transparent 70%);
 }
 
+/* 水面のゆらゆら光 */
 .water::before{
   content:"";
   position:absolute;
-  inset:-20%;
+  inset:-40%;
   background:
     repeating-linear-gradient(
-      95deg,
-      transparent 0 26px,
-      rgba(170,230,255,.22) 28px 31px,
-      transparent 33px 62px
+      100deg,
+      transparent 0 34px,
+      rgba(170,235,255,.18) 36px 39px,
+      transparent 42px 80px
     ),
     repeating-linear-gradient(
-      35deg,
-      transparent 0 38px,
-      rgba(255,255,255,.12) 40px 42px,
-      transparent 44px 78px
+      75deg,
+      transparent 0 46px,
+      rgba(255,255,255,.10) 48px 50px,
+      transparent 53px 96px
     );
+  filter:blur(2px);
   mix-blend-mode:screen;
-  animation:waterShimmer 14s linear infinite;
+  animation:surfaceGlow 16s ease-in-out infinite alternate;
 }
 
+/* 上から差し込む光 */
 .water::after{
   content:"";
   position:absolute;
   inset:0;
-  background:linear-gradient(
-    to bottom,
-    rgba(150,220,255,.25),
-    rgba(50,140,255,.08),
-    transparent
-  );
+  background:
+    linear-gradient(
+      105deg,
+      transparent 0%,
+      rgba(160,230,255,.20) 22%,
+      transparent 38%
+    ),
+    linear-gradient(
+      80deg,
+      transparent 18%,
+      rgba(255,255,255,.16) 46%,
+      transparent 62%
+    ),
+    linear-gradient(
+      120deg,
+      transparent 45%,
+      rgba(100,200,255,.16) 70%,
+      transparent 86%
+    );
+  filter:blur(6px);
+  opacity:.75;
+  animation:lightSway 8s ease-in-out infinite alternate;
 }
 
-@keyframes waterMove{
+@keyframes surfaceGlow{
   from{
-    transform:translateX(-2%) scale(1);
+    transform:translateX(-6%) translateY(-2%) rotate(0deg) scale(1);
   }
   to{
-    transform:translateX(2%) scale(1.08);
+    transform:translateX(6%) translateY(2%) rotate(3deg) scale(1.08);
   }
 }
 
-@keyframes waterShimmer{
+@keyframes lightSway{
   from{
-    transform:translateX(0) rotate(0deg);
+    transform:translateX(-3%) skewX(-4deg);
+    opacity:.45;
   }
   to{
-    transform:translateX(-120px) rotate(2deg);
+    transform:translateX(4%) skewX(5deg);
+    opacity:.85;
   }
 }
